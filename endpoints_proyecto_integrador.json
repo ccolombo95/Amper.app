@@ -1,0 +1,79 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Proyecto Integrador",
+    "dateExported": "2024-09-30T17:31:41.132Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f57ebc12-b704-4b9b-9697-2553b57e3965",
+            "colId": "c28e76aa-69a0-4d0f-94ce-69c9c0925201",
+            "containerId": "",
+            "name": "Todos los productos",
+            "url": "http://localhost:8080/api/v1/productos",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-09-30T17:24:33.993Z",
+            "modified": "2024-09-30T17:24:33.993Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d4c50492-b43d-4586-aa9a-4935654b36de",
+            "colId": "c28e76aa-69a0-4d0f-94ce-69c9c0925201",
+            "containerId": "",
+            "name": "Un productos por id",
+            "url": "http://localhost:8080/api/v1/productos/4",
+            "method": "GET",
+            "sortNum": 12500,
+            "created": "2024-09-30T17:24:44.843Z",
+            "modified": "2024-09-30T17:29:00.098Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ad339fa3-1d15-40e6-a78d-6340a85f584c",
+            "colId": "c28e76aa-69a0-4d0f-94ce-69c9c0925201",
+            "containerId": "",
+            "name": "Crear un producto",
+            "url": "http://localhost:8080/api/v1/productos",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2024-09-30T17:29:28.196Z",
+            "modified": "2024-09-30T17:29:50.938Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fa725340-5892-430b-8a98-0ee7687dbdc7",
+            "colId": "c28e76aa-69a0-4d0f-94ce-69c9c0925201",
+            "containerId": "",
+            "name": "Editar un producto",
+            "url": "http://localhost:8080/api/v1/productos/4",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-09-30T17:30:25.200Z",
+            "modified": "2024-09-30T17:30:45.980Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0a2df802-b0ff-44db-86e6-674b377bc4b9",
+            "colId": "c28e76aa-69a0-4d0f-94ce-69c9c0925201",
+            "containerId": "",
+            "name": "Elimino un producto",
+            "url": "http://localhost:8080/api/v1/productos/4",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-09-30T17:30:59.262Z",
+            "modified": "2024-09-30T17:31:15.455Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
