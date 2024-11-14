@@ -16,11 +16,11 @@ import isAuthenticated from "../middlewares/usuarios.middleware.js";
 // ! ***********************************
 
 // ! CRUD -> R:READ ALL -> Verbo GET ALL -> Nos entrega todos los productos
-productosRouter.get("/api/v1/productos", isAuthenticated, controladores.getAll);
+startupsRouter.get("/api/startups", controladores.getAll);
 // ! CRUD -> R:READ ONE -> Verbo GET ONE -> Nos entrega un producto por id
 // productosRouter.get('/api/v1/productos/:id', isAuthenticated, controladores.getOne)
 // ! CRUD -> C:CREATE -> Verbo POST -> Nos va a guardar un recurso (producto)
-// productosRouter.post('/api/v1/productos', isAuthenticated, controladores.create)
+startupsRouter.post("/api/startup", controladores.create);
 // ! CRUD -> U:UPDATE -> Verbo PUT -> Nos va a editar un recurso (producto)
 // productosRouter.put('/api/v1/productos/:id', isAuthenticated, controladores.edit)
 // ! CRUD -> D:DELETE -> Verbo DELETE -> Nos va a eliminar un recurso (producto)

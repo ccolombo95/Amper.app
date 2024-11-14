@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
-// ! Crear el esquema de productos (SCHEMA)
-
-// https://mongoosejs.com/docs/timestamps.html
-// https://stackoverflow.com/questions/12495891/what-is-the-v-field-in-mongoose
-// https://mongoosejs.com/docs/schematypes.html
+// ! Crear el esquema de startups (SCHEMA)
 
 const startupsEsquema = new mongoose.Schema(
   {
@@ -18,14 +14,19 @@ const startupsEsquema = new mongoose.Schema(
     phone: Number,
     mail: String,
     website: String,
-    mail: String,
-    mail: String,
-    mail: String,
-    mail: String,
+    facebook: String,
+    instagram: String,
+    banner: String,
+    photo1: String,
+    photo2: String,
+    text1: String,
+    text2: String,
+    text3: String,
+    donations: Number,
   },
   {
-    versionKey: false /* remover el field __v */,
-    timestamps: true /* createAt y el updateAt */,
+    versionKey: false,
+    timestamps: true,
   }
 );
 

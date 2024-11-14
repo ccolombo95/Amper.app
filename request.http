@@ -1,0 +1,25 @@
+GET http://localhost:8080/api/startups
+###
+GET https://pokeapi.co/api/v2/pokemon/ditto
+###
+POST http://localhost:8080/api/startup
+Content-Type: application/json
+
+{   
+    "name": "Gonza",
+    "slogan": "te queremos un montón",
+    "description": "sos el mejor",
+    "owner": "programeitor",
+    "phone": 213,
+    "mail": "no como que uso chat gpt",
+    "website": "sabes una banda",
+    "facebook": "String",
+    "instagram": "String",
+    "banner": "String",
+    "photo1": "String",
+    "photo2": "String",
+    "text1": "String",
+    "text2": "String",
+    "text3": "String",
+    "donations": 23131
+}

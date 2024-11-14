@@ -1,52 +1,40 @@
-import modelos from "../models/startup.models.js";
+import modelos from "../models/startups.models.js";
 
-// const listarProductoPublico = async (req, res) => {
+const listarStartupPublico = async (req, res) => {
+  try {
+    const startups = await modelos.obtenerTodos();
 
-//     try {
+    const dataVista = {
+      startups: startups,
+    };
 
-//         const productos = await modelos.obtenerTodos()
-//         //res.json(productos)
-//         //console.log(req.user?.email)
-//         //console.log(req.user?.name)
+    res.render("inicio", dataVista);
+  } catch (error) {
+    console.log("[getAll]", error);
+    res.status(500).json({
+      mensaje: "No se pudo obtener los startups",
+    });
+  }
+};
 
-//         const dataVista = {
-//             productos: productos
-//         }
+const showCreateForm = (req, res) => {
+  res.render("startups/create");
+};
+const showEditForm = async (req, res) => {
+  const id = req.params.id;
 
-//         res.render('inicio', dataVista)
+  try {
+    const startup = await modelos.obtenerUnStartupPorId(id);
 
-//     } catch (error) {
-//         console.log('[getAll]', error)
-//         res.status(500).json(
-//             {
-//                 mensaje: 'No se pudo obtener los productos'
-//             }
-//         )
-//     }
-// }
+    const dataVista = {
+      startup: startup,
+    };
 
-// const showCreateForm = (req, res) => {
-//     res.render('productos/create')
-// }
-// const showEditForm = async (req, res) => {
-
-//     const id = req.params.id
-
-//     try {
-
-//         const unProducto = await modelos.obtenerUnProductoPorId(id)
-
-//         const dataVista = {
-//             producto: unProducto
-//         }
-
-//         res.render('productos/edit', dataVista)
-
-//     } catch (error) {
-//         console.log('[showEditForm]', error)
-//     }
-
-// }
+    res.render("startups/edit", dataVista);
+  } catch (error) {
+    console.log("[showEditForm]", error);
+  }
+};
 
 const getAll = async (req, res) => {
   try {
@@ -55,91 +43,75 @@ const getAll = async (req, res) => {
     const dataVista = {
       startups: startups,
     };
-
-    res.render("inicio-logueado", dataVista);
   } catch (error) {
     console.log("[getAll]", error);
     res.status(500).json({
-      mensaje: "No se pudo obtener los emprendimientos",
+      mensaje: "No se pudo obtener los startups",
     });
   }
 };
-// const getOne = async (req, res) => {
+const getOne = async (req, res) => {
+  const id = req.params.id;
 
-//     const id = req.params.id
+  try {
+    const startup = await modelos.obtenerUnStartupPorId(id);
 
-//     try {
-//         const producto = await modelos.obtenerUnProductoPorId(id)
+    const dataVista = {
+      startup,
+    };
 
-//         const dataVista = {
-//             producto
-//         }
+    res.render("startups/show", dataVista);
+  } catch (error) {
+    console.log("[getOne]", error);
+  }
+};
 
-//         res.render('productos/show', dataVista)
+// ! CREATE
+const create = async (req, res) => {
+  console.log("Request received at /startup");
+  try {
+    const startup = req.body;
 
-//     } catch (error) {
-//         console.log('[getOne]', error)
-//     }
+    const startupGuardado = await modelos.guardarStartup(startup);
 
-// }
+    res.status(201).json({
+      mensaje: "si se puedo yeyy",
+      startup,
+    });
+  } catch (error) {
+    console.log("[create]", error);
+    res.status(500).json({
+      mensaje: "No se pudo crear el startup",
+      startup,
+    });
+  }
+};
 
-// // ! CREATE
-// const create = async (req, res) => {
+// ! EDIT
+const edit = (req, res) => {
+  const startupEditado = modelos.actualizarStartup();
 
-//     try {
+  res.send(startupEditado);
+};
 
-//         const producto = req.body
+const remove = async (req, res) => {
+  const id = req.params.id;
 
-//         //console.log(producto) // <--- controlo que me llegue el producto
-
-//         const productoGuardado = await modelos.guardarProducto(producto)
-
-//         //res.status(201).json(productoGuardado) // El producto con el ObjID
-//         // res.status(201).render('producto-creado', dataVista)
-//         res.status(201).redirect('/api/v1/productos')
-
-//     } catch (error) {
-//         console.log('[create]', error)
-//         res.status(500).json(
-//             {
-//                 mensaje: 'No se pudo crear el producto',
-//                 producto
-//             }
-//         )
-//     }
-
-// }
-
-// // ! EDIT
-// const edit = (req, res) => {
-
-//     const productoEditado = modelos.actualizarProducto()
-
-//     res.send(productoEditado)
-// }
-
-// const remove = async (req, res) => {
-
-//     const id = req.params.id
-
-//     try {
-//         const productoBorrado = await modelos.removerProducto(id)
-//         //res.json(productoBorrado)
-//         //res.render('nombre-vista', productoBorrado)
-//         res.redirect('/api/v1/productos')
-//     } catch (error) {
-//         console.log('[remove]', error)
-//     }
-
-// }
+  try {
+    const startupBorrado = await modelos.removerStartup(id);
+    res.redirect("/api/v1/startups");
+  } catch (error) {
+    console.log("[remove]", error);
+  }
+};
 
 export default {
   getAll,
-  // getOne,
-  // create,
-  // edit,
-  // remove,
-  // showCreateForm,
-  // showEditForm,
-  // listarProductoPublico
+  getOne,
+  create,
+  edit,
+  remove,
+  showCreateForm,
+  showEditForm,
+  listarStartupPublico,
 };
